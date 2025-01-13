@@ -8,4 +8,18 @@
     <string name="btJugadores">Jugadores</string>
     <string name="version_app">Versión 1.0</string>
     <string name="descripcion_app">App en la que se gestiona el conocido Club Deportivo IES CIERVA</string>
+    <string name="jugadores_titulo">JUGADORES</string>
+    <string name="id">ID</string>
+    <string name="apellidos">Apellido1 y Apellido2</string>
+    <string name="genero">Genero</string>
+    <string name="fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="altura">Altura</string>
+    <string name="telf">Teléfono</string>
+    <string name="correo">Correo Electrónico</string>
+    <string name="observaciones">Observaciones</string>
+    <string name="info">Info</string>
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
+    <string name="otro">Otro</string>
+    <string name="formulario">Formulario</string>
 </resources>
