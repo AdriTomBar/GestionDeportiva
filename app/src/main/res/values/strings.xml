@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Deportivo Cierva</string>
+    <string name="titulo">Club Deportivo IES CIERVA</string>
+    <string name="labelNombre">Nombre</string>
+    <string name="labelEdad">Edad</string>
+    <string name="salirBtn">Salir</string>
+</resources>
