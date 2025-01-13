@@ -4,4 +4,8 @@
     <string name="labelNombre">Nombre</string>
     <string name="labelEdad">Edad</string>
     <string name="salirBtn">Salir</string>
+    <string name="btAcercaDe">Acerca de</string>
+    <string name="btJugadores">Jugadores</string>
+    <string name="version_app">Versión 1.0</string>
+    <string name="descripcion_app">App en la que se gestiona el conocido Club Deportivo IES CIERVA</string>
 </resources>
