@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/jugadores"
+        android:title="@string/btJugadores" />
+    <item android:id="@+id/equipos"
+        android:title="@string/equipos" />
+    <item android:id="@+id/informes"
+        android:title="@string/informes" />
+    <item android:id="@+id/acercaDe"
+        android:title="@string/btAcercaDe" />
+    <item android:id="@+id/salir"
+        android:title="@string/salirBtn" />
+</menu>

@@ -23,4 +23,6 @@
     <string name="femenino">Female</string>
     <string name="otro">Other</string>
     <string name="formulario">Form</string>
+    <string name="equipos">Teams</string>
+    <string name="informes">Informs</string>
 </resources>

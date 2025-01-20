@@ -1,12 +1,14 @@
 package com.example.gestionclubdeportivo;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.Toolbar;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -14,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Jugadores extends AppCompatActivity {
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,54 @@ public class Jugadores extends AppCompatActivity {
         });
         Button info = findViewById(R.id.btInfo);
         info.setOnClickListener(view -> mostrarInfo()); //Versión simplificada
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Mostrar el menú definido en menu.xml
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //Acciones a realizar según la opción seleccionada
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.jugadores) {
+            // Iniciar  actividad  Jugadores
+            Intent intentJugadores = new Intent(this, Jugadores.class);
+            startActivity(intentJugadores);
+            return true;
+        }
+        else if (itemId == R.id.equipos) {
+            // Iniciar  actividad  Equipos
+            Intent intentEquipos = new Intent(this, Equipos.class);
+            startActivity(intentEquipos);
+            return true;
+        }
+        else if (itemId == R.id.informes) {
+            // Iniciar  actividad  Informes
+            Intent intentInformes = new Intent(this, Informes.class);
+            startActivity(intentInformes);
+            return true;
+        }
+        else if (itemId == R.id.acercaDe) {
+            // Iniciar actividad AcercaDe
+            Intent intentAcercaDe = new Intent(this, AcercaDe.class);
+            startActivity(intentAcercaDe);
+            return true;
+        }
+        else if (itemId == R.id.salir) {
+            // Cerrar
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

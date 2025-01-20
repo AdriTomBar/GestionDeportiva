@@ -2,11 +2,9 @@ package com.example.gestionclubdeportivo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import org.intellij.lang.annotations.Identifier;
 
 public class MainActivity extends AppCompatActivity {
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,74 +27,52 @@ public class MainActivity extends AppCompatActivity {
             return insets;
 
         });
-        Button btSalir = findViewById(R.id.btSalir);
-        btSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                salir();
-            }
-        });
-        Button btJugadores = findViewById(R.id.btJugadores);
-
-        btJugadores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                abrirJugadores();
-            }
-        });
-
-        Button btAcercaDe = findViewById(R.id.btAcercaDe);
-        btAcercaDe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                comprobarEdad();
-            }
-        });
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Mostrar el menú definido en menu.xml
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    //Acciones a realizar según la opción seleccionada
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
 
-    public void comprobarEdad() {
-        TextView edad = findViewById(R.id.inputEdadPpal);
-        String textoEdad = edad.getText().toString().trim();
-
-        if (textoEdad.isEmpty()) {
-            Toast.makeText(this, "Por favor introduce una edad válida", Toast.LENGTH_SHORT).show();
-            return;
+        if (itemId == R.id.jugadores) {
+            // Iniciar  actividad  Jugadores
+            Intent intentJugadores = new Intent(this, Jugadores.class);
+            startActivity(intentJugadores);
+            return true;
+        }
+        else if (itemId == R.id.equipos) {
+            // Iniciar  actividad  Equipos
+            Intent intentEquipos = new Intent(this, Equipos.class);
+            startActivity(intentEquipos);
+            return true;
+        }
+        else if (itemId == R.id.informes) {
+            // Iniciar  actividad  Informes
+            Intent intentInformes = new Intent(this, Informes.class);
+            startActivity(intentInformes);
+            return true;
+        }
+        else if (itemId == R.id.acercaDe) {
+            // Iniciar actividad AcercaDe
+            Intent intentAcercaDe = new Intent(this, AcercaDe.class);
+            startActivity(intentAcercaDe);
+            return true;
+        }
+        else if (itemId == R.id.salir) {
+            // Cerrar
+            finish();
+            return true;
         }
 
-        try {
-            int edadComprobar = Integer.parseInt(textoEdad);
-            if (edadComprobar < 16) {
-                Toast.makeText(this, "No puedes iniciar sesión si tienes menos de 16 años", Toast.LENGTH_LONG).show();
-            } else {
-                abrirAcercaDe();
-            }
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Por favor introduce una edad válida", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void abrirAcercaDe(){
-        Intent i = new Intent(this, AcercaDe.class);
-        TextView edad = findViewById(R.id.inputEdadPpal);
-        String textoEdad = edad.getText().toString().trim();
-
-        TextView nombre = findViewById(R.id.inputNombrePpal);
-        String textoNombre = nombre.getText().toString().trim();
-
-        i.putExtra("edad",textoEdad);
-        i.putExtra("nombre",textoNombre);
-
-        startActivity(i);
-    }
-
-    public void abrirJugadores(){
-        Intent i = new Intent(this, Jugadores.class);
-        startActivity(i);
-    }
-
-    public void salir (){
-        finish();
+        return super.onOptionsItemSelected(item);
     }
 }
