@@ -67,12 +67,16 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     public void filtrar(String categoria, String modalidad) {
         equiposFiltrados.clear();
 
-        if (categoria.isEmpty() && modalidad.isEmpty()) {
+        // Si se selecciona "Todos", considera el filtro como vacío
+        boolean filtrarCategoria = !categoria.equalsIgnoreCase("Todos");
+        boolean filtrarModalidad = !modalidad.equalsIgnoreCase("Todos");
+
+        if (!filtrarCategoria && !filtrarModalidad) {
             equiposFiltrados.addAll(equiposOriginal); // Si no hay filtros, muestra todos
         } else {
             for (Equipo equipo : equiposOriginal) {
-                boolean coincideCategoria = categoria.isEmpty() || equipo.getCategoria().equalsIgnoreCase(categoria);
-                boolean coincideModalidad = modalidad.isEmpty() || equipo.getModalidad().equalsIgnoreCase(modalidad);
+                boolean coincideCategoria = !filtrarCategoria || equipo.getCategoria().equalsIgnoreCase(categoria);
+                boolean coincideModalidad = !filtrarModalidad || equipo.getModalidad().equalsIgnoreCase(modalidad);
 
                 if (coincideCategoria && coincideModalidad) {
                     equiposFiltrados.add(equipo);
@@ -82,6 +86,7 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
 
         notifyDataSetChanged(); // Actualiza la vista
     }
+
 
     static class EquipoViewHolder extends RecyclerView.ViewHolder {
         ImageView imgEquipo;

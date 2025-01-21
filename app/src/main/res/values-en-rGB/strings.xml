@@ -25,4 +25,14 @@
     <string name="formulario">Form</string>
     <string name="equipos">Teams</string>
     <string name="informes">Informs</string>
+    <string name="categoria">Category :</string>
+    <string name="nombre">Name :</string>
+    <string name="patrocinador">Sponsor :</string>
+    <string name="modalidad">Modality :</string>
+    <string name="federado">Federated :</string>
+    <string name="d_a_de_partido">Day of match :</string>
+    <string name="hora_partido">Time pf the match  :</string>
+    <string name="entrenamientos">Trainings :</string>
+    <string name="persona_contacto">Contact person :</string>
+    <string name="tel_fono_contacto">Contact phone :</string>
 </resources>

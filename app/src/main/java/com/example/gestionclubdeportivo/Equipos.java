@@ -121,45 +121,45 @@ public class Equipos extends AppCompatActivity {
         List<Equipo> equipos = new ArrayList<>();
 
         equipos.add(new Equipo(
-                "Tigres F.C.",                      // nombre
-                "Adidas",                           // patrocinador
-                "Junior",                           // categoria
-                "Masculino",                        // modalidad
-                true,                               // federado
-                R.drawable.ic_launcher_foreground,  // imagen (reemplazar con una imagen válida)
-                "Sábado",                           // diaPartido
-                "18:00",                            // horaPartido
-                "Lunes y Miércoles a las 18:00",     // entrenamientos
-                "Juan Pérez",                       // contacto
-                "123456789"                          // telefono
+                "Murcia C.B",
+                "Universae",
+                "Junior",
+                "Masculino",
+                true,
+                R.drawable.ic_launcher_foreground,
+                "Sábado",
+                "19:00",
+                "Lunes y Miércoles a las 18:55",
+                "Álvaro Buendía",
+                "968242812"
         ));
 
         equipos.add(new Equipo(
-                "Panteras",                         // nombre
-                "Nike",                             // patrocinador
-                "Infantil",                         // categoria
-                "Femenino",                         // modalidad
-                false,                              // federado
-                R.drawable.ic_launcher_foreground,  // imagen (reemplazar con una imagen válida)
-                "Domingo",                          // diaPartido
-                "16:00",                            // horaPartido
-                "Martes y Jueves a las 17:00",       // entrenamientos
-                "Ana Gómez",                        // contacto
-                "987654321"                         // telefono
+                "Patiño",
+                "Nike",
+                "Infantil",
+                "Femenino",
+                true,
+                R.drawable.ic_launcher_foreground,
+                "Domingo",
+                "16:00",
+                "Martes y Jueves a las 16:30",
+                "Ana Gómez",
+                "987654321"
         ));
 
-        equipos.add(new Equipo(
-                "Águilas",                          // nombre
-                "Puma",                             // patrocinador
-                "Cadete",                           // categoria
-                "Masculino",                        // modalidad
-                true,                               // federado
-                R.drawable.ic_launcher_foreground,  // imagen (reemplazar con una imagen válida)
-                "Sábado",                           // diaPartido
-                "20:00",                            // horaPartido
-                "Miércoles y Viernes a las 18:00",   // entrenamientos
-                "Carlos López",                     // contacto
-                "1122334455"                        // telefono
+        boolean add = equipos.add(new Equipo(
+                "Águilas",
+                "Puma",
+                "Cadete",
+                "Masculino",
+                false,
+                R.drawable.ic_launcher_foreground,
+                "Sábado",
+                "20:00",
+                "Miércoles a las 18:00",
+                "Carlos López",
+                "644754376"
         ));
 
         return equipos;

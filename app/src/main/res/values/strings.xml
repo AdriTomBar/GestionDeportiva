@@ -24,4 +24,15 @@
     <string name="formulario">Formulario</string>
     <string name="equipos">Eqipos</string>
     <string name="informes">Informes</string>
+    <string name="categoria">Categoria :</string>
+    <string name="nombre">Nombre :</string>
+    <string name="patrocinador">Patrocinador :</string>
+    <string name="modalidad">Modalidad :</string>
+    <string name="federado">Federado :</string>
+    <string name="d_a_de_partido">Día de partido :</string>
+    <string name="hora_partido">Hora partido :</string>
+    <string name="entrenamientos">Entrenamientos :</string>
+    <string name="persona_contacto">Persona contacto :</string>
+    <string name="tel_fono_contacto">Teléfono contacto :</string>
+
 </resources>

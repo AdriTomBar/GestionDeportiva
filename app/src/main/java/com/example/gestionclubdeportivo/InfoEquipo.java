@@ -42,18 +42,19 @@ public class InfoEquipo extends AppCompatActivity {
 
         // Obtener los datos enviados desde el intent
         Intent intent = getIntent();
+
         if (intent != null) {
             imgEquipo.setImageResource(intent.getIntExtra("imagen", 0));
-            tvNombre.setText(intent.getStringExtra("nombre"));
-            tvPatrocinador.setText("El patrocinador es: "+(intent.getStringExtra("patrocinador")));
-            tvCategoria.setText(intent.getStringExtra("categoria"));
-            tvModalidad.setText(intent.getStringExtra("modalidad"));
-            tvFederado.setText(intent.getBooleanExtra("federado", false) ? "Federado: Sí" : "Federado: No");
-            tvDiaPartido.setText(intent.getStringExtra("diaPartido"));
-            tvHoraPartido.setText(intent.getStringExtra("horaPartido"));
-            tvEntrenamientos.setText(intent.getStringExtra("entrenamientos"));
-            tvContacto.setText(intent.getStringExtra("contacto"));
-            tvTelefono.setText(intent.getStringExtra("telefono"));
+            tvNombre.setText(getString(R.string.nombre)+(intent.getStringExtra("nombre")));
+            tvPatrocinador.setText(getString(R.string.patrocinador) + (intent.getStringExtra("patrocinador")));
+            tvCategoria.setText(getString(R.string.categoria)+(intent.getStringExtra("categoria")));
+            tvModalidad.setText(getString(R.string.modalidad) +(intent.getStringExtra("modalidad")));
+            tvFederado.setText(getString(R.string.federado) +(intent.getBooleanExtra("federado", false) ? "Federado: Sí" : "Federado: No"));
+            tvDiaPartido.setText(getString(R.string.d_a_de_partido) +(intent.getStringExtra("diaPartido")));
+            tvHoraPartido.setText(getString(R.string.hora_partido) +(intent.getStringExtra("horaPartido")));
+            tvEntrenamientos.setText(getString(R.string.entrenamientos) +(intent.getStringExtra("entrenamientos")));
+            tvContacto.setText(getString(R.string.persona_contacto) +(intent.getStringExtra("contacto")));
+            tvTelefono.setText(getString(R.string.tel_fono_contacto) +(intent.getStringExtra("telefono")));
         }
     }
 
