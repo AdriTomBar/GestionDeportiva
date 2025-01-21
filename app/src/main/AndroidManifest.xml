@@ -13,7 +13,16 @@
         android:theme="@style/Theme.GestionClubDeportivo"
         tools:targetApi="31">
         <activity
+            android:name=".InfoEquipo"
+            android:exported="false" />
+        <activity
+            android:name=".Equipo"
+            android:exported="false" />
+        <activity
             android:name=".Equipos"
+            android:exported="false" />
+        <activity
+            android:name=".models.Equipos"
             android:exported="false" />
         <activity
             android:name=".Informes"

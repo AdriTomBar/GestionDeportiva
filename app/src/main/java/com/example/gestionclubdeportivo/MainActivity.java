@@ -12,8 +12,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.intellij.lang.annotations.Identifier;
-
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Override
@@ -68,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         else if (itemId == R.id.salir) {
-            // Cerrar
             finish();
             return true;
         }

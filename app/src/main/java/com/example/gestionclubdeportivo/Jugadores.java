@@ -71,8 +71,8 @@ public class Jugadores extends AppCompatActivity {
             return true;
         }
         else if (itemId == R.id.salir) {
-            // Cerrar
-            finish();
+            Intent i = new Intent(this , MainActivity.class);
+            startActivity(i);
             return true;
         }
 

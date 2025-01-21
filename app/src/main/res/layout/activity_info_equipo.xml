@@ -1,0 +1,98 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Imagen  -->
+        <ImageView
+            android:id="@+id/imgEquipoDetalle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nombre  -->
+        <TextView
+            android:id="@+id/tvNombreDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Patrocinador -->
+        <TextView
+            android:id="@+id/tvPatrocinadorDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Categoría -->
+        <TextView
+            android:id="@+id/tvCategoriaDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Modalidad -->
+        <TextView
+            android:id="@+id/tvModalidadDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Federado -->
+        <TextView
+            android:id="@+id/tvFederadoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Día del Partido -->
+        <TextView
+            android:id="@+id/tvDiaPartidoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Hora del Partido -->
+        <TextView
+            android:id="@+id/tvHoraPartidoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Entrenamientos -->
+        <TextView
+            android:id="@+id/tvEntrenamientosDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Contacto -->
+        <TextView
+            android:id="@+id/tvContactoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:id="@+id/tvTelefonoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/salirBtn" />
+    </LinearLayout>
+</ScrollView>

@@ -72,7 +72,8 @@ public class AcercaDe extends AppCompatActivity {
         }
         else if (itemId == R.id.salir) {
             // Cerrar
-            finish();
+            Intent i = new Intent(this , MainActivity.class);
+            startActivity(i);
             return true;
         }
 
