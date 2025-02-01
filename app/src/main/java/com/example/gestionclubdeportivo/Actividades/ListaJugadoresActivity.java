@@ -1,6 +1,6 @@
-// app/src/main/java/com/example/gestionclubdeportivo/Actividades/ListaJugadoresActivity.java
 package com.example.gestionclubdeportivo.Actividades;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -11,7 +11,6 @@ import androidx.room.Room;
 import com.example.gestionclubdeportivo.Adapters.JugadorAdapter;
 import com.example.gestionclubdeportivo.Database.AppDatabase;
 import com.example.gestionclubdeportivo.R;
-import com.example.gestionclubdeportivo.models.Equipo;
 import com.example.gestionclubdeportivo.models.Jugador;
 
 import java.util.List;
@@ -34,23 +33,36 @@ public class ListaJugadoresActivity extends AppCompatActivity {
         executorService = Executors.newSingleThreadExecutor();
 
         loadJugadores();
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            // Obtén el jugador seleccionado
+            Jugador jugador = (Jugador) parent.getItemAtPosition(position);
+
+            if (jugador != null) {
+                // Crear una nueva Intent para la actividad de detalles del jugador
+                Intent intent = new Intent(ListaJugadoresActivity.this, DetalleJugadorActivity.class);
+                // Pasar toda la información del jugador
+                intent.putExtra("jugador_id", jugador.getId());
+                intent.putExtra("jugador_nombre", jugador.getNombre());
+                intent.putExtra("jugador_apellidos", jugador.getApellidos());
+                intent.putExtra("jugador_sexo", jugador.getSexo());
+                intent.putExtra("jugador_fecha_nacimiento", jugador.getFechaNacimiento());
+                intent.putExtra("jugador_altura", jugador.getAltura());
+                intent.putExtra("jugador_posicion", jugador.getPosicion());
+                intent.putExtra("jugador_equipo", jugador.getEquipo());
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadJugadores() {
         executorService.execute(() -> {
             AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "gestionclubdeportivo")
-                    .addMigrations(AppDatabase.MIGRATION_3_4) // Apply the migration
+                    .addMigrations(AppDatabase.MIGRATION_2_3) // Apply the migration
                     .fallbackToDestructiveMigration() // Optional: fallback to destructive migration
                     .build();
 
             List<Jugador> jugadores = db.jugadorDao().getAllJugadores();
-
-            for (Jugador jugador : jugadores) {
-                Equipo equipo = db.equipoDao().getEquipoById(jugador.getEquipo());
-                if (equipo != null) {
-                    jugador.setEquipoNombre(equipo.getNombre());
-                }
-            }
 
             runOnUiThread(() -> {
                 if (jugadores.isEmpty()) {
@@ -60,38 +72,6 @@ public class ListaJugadoresActivity extends AppCompatActivity {
                 jugadorAdapter = new JugadorAdapter(ListaJugadoresActivity.this, jugadores);
                 listView.setAdapter(jugadorAdapter);
             });
-        });
-    }
-
-    private void insertJugadoresDePrueba(AppDatabase db) {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-        executorService.execute(() -> {
-            // Crear jugadores de prueba
-            Jugador jugador1 = new Jugador();
-            jugador1.setNombre("Juan");
-            jugador1.setApellidos("Pérez");
-            jugador1.setSexo("Masculino");
-            jugador1.setFechaNacimiento("1995-07-14");
-            jugador1.setAltura(1.75f);
-            jugador1.setPosicion("Delantero");
-            jugador1.setEquipo(1); // Asumimos que el equipo con ID 1 ya existe
-
-            Jugador jugador2 = new Jugador();
-            jugador2.setNombre("Ana");
-            jugador2.setApellidos("Gómez");
-            jugador2.setSexo("Femenino");
-            jugador2.setFechaNacimiento("1997-03-22");
-            jugador2.setAltura(1.65f);
-            jugador2.setPosicion("Centrocampista");
-            jugador2.setEquipo(2); // Asumimos que el equipo con ID 2 ya existe
-
-            // Insertar los jugadores de prueba en la base de datos
-            db.jugadorDao().insert(jugador1);
-            db.jugadorDao().insert(jugador2);
-
-            // Ejecutar el Toast en el hilo principal
-            runOnUiThread(() -> Toast.makeText(this, "Jugadores de prueba insertados", Toast.LENGTH_SHORT).show());
         });
     }
 }
