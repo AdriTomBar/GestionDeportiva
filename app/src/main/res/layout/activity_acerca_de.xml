@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/negro_inicio"
-    tools:context=".AcercaDe">
+    tools:context=".Actividades.AcercaDe">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

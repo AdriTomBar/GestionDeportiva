@@ -1,4 +1,4 @@
-package com.example.gestionclubdeportivo;
+package com.example.gestionclubdeportivo.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.gestionclubdeportivo.R;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
         if (itemId == R.id.jugadores) {
-            // Iniciar  actividad  Jugadores
-            Intent intentJugadores = new Intent(this, Jugadores.class);
+            // Iniciar  actividad  inscripcionJugador
+            Intent intentJugadores = new Intent(this, inscripcionJugador.class);
             startActivity(intentJugadores);
             return true;
         }

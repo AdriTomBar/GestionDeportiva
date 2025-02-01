@@ -13,28 +13,35 @@
         android:theme="@style/Theme.GestionClubDeportivo"
         tools:targetApi="31">
         <activity
-            android:name=".InfoEquipo"
+            android:name=".Actividades.ListaJugadoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Actividades.MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2" />
+        <activity
+            android:name=".Actividades.InfoEquipo"
             android:exported="false" />
         <activity
             android:name=".Equipo"
             android:exported="false" />
         <activity
-            android:name=".Equipos"
+            android:name=".Actividades.Equipos"
             android:exported="false" />
         <activity
             android:name=".models.Equipos"
             android:exported="false" />
         <activity
-            android:name=".Informes"
+            android:name=".Actividades.Informes"
             android:exported="false" />
         <activity
-            android:name=".Jugadores"
+            android:name=".Actividades.inscripcionJugador"
             android:exported="false" />
         <activity
-            android:name=".AcercaDe"
+            android:name=".Actividades.AcercaDe"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Actividades.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

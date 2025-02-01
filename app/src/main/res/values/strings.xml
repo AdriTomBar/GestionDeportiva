@@ -22,7 +22,7 @@
     <string name="femenino">Femenino</string>
     <string name="otro">Otro</string>
     <string name="formulario">Formulario</string>
-    <string name="equipos">Eqipos</string>
+    <string name="equipos">Equipos</string>
     <string name="informes">Informes</string>
     <string name="categoria">Categoria :</string>
     <string name="nombre">Nombre :</string>
@@ -34,5 +34,11 @@
     <string name="entrenamientos">Entrenamientos :</string>
     <string name="persona_contacto">Persona contacto :</string>
     <string name="tel_fono_contacto">Teléfono contacto :</string>
-
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="equipo_image">\n</string>
+    <string name="dia_partido" />
+    <string name="numero_contacto">Contacto</string>
 </resources>
