@@ -185,7 +185,7 @@ public class inscripcionJugador extends AppCompatActivity {
     private void insertJugadorEnBaseDeDatos(Jugador jugador) {
         // Crear o obtener la base de datos
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "jugadores_db")
-                .allowMainThreadQueries()  // NO hacer esto en producción, usar hilos en segundo plano
+                .allowMainThreadQueries()
                 .build();
 
         // Insertar el jugador en la base de datos

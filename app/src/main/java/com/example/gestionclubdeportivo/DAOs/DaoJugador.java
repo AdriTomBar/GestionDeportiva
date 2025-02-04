@@ -32,4 +32,13 @@ public interface DaoJugador {
 
     @Delete
     void delete(Jugador jugador);
+
+    @Query("SELECT * FROM jugadores WHERE posicion = :posicion")
+    List<Jugador> getJugadoresByPosicion(String posicion);
+
+    @Query("SELECT * FROM jugadores WHERE equipo = :equipoId")
+    List<Jugador> getJugadoresByEquipo(int equipoId);
+
+    @Query("SELECT * FROM jugadores WHERE posicion = :posicion AND equipo = :equipoId")
+    List<Jugador> getJugadoresByPosicionAndEquipo(String posicion, int equipoId);
 }

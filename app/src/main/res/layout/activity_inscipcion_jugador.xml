@@ -208,12 +208,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btCancelar"
-            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="6dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="Cancelar"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            android:layout_weight="1"
+            android:minWidth="90dip"
+            android:minHeight="50dip"
+            android:text="Cancelar" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btGuardar"
@@ -225,12 +227,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btListaJugadores"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ver Jugadores"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            android:layout_marginTop="16dp"
+            android:text="Jugadores" />
 
     </LinearLayout>
 

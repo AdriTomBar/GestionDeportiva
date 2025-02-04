@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <!-- Campo para filtrar por posición -->
+    <EditText
+        android:id="@+id/editTextFiltroPosicion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filtrar por posición"
+        android:padding="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Campo para filtrar por ID de equipo -->
+    <EditText
+        android:id="@+id/editTextFiltroEquipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filtrar por ID de equipo"
+        android:inputType="number"
+        android:padding="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_below="@id/editTextFiltroPosicion"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Botón para aplicar los filtros -->
+    <Button
+        android:id="@+id/buttonFiltrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filtrar"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/editTextFiltroEquipo"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Lista de jugadores -->
     <ListView
         android:id="@+id/listViewJugadores"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
-        android:padding="16dp" />
+        android:layout_below="@id/buttonFiltrar"/>
 </RelativeLayout>

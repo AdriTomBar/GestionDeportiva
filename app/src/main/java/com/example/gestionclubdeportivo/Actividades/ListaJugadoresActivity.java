@@ -2,6 +2,8 @@ package com.example.gestionclubdeportivo.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,9 @@ public class ListaJugadoresActivity extends AppCompatActivity {
     private ListView listView;
     private JugadorAdapter jugadorAdapter;
     private ExecutorService executorService;
+    private EditText filtroPosicion, filtroEquipo;
+    private Button btnFiltrar;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +34,31 @@ public class ListaJugadoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_jugadores);
 
         listView = findViewById(R.id.listViewJugadores);
+        filtroPosicion = findViewById(R.id.editTextFiltroPosicion);
+        filtroEquipo = findViewById(R.id.editTextFiltroEquipo);
+        btnFiltrar = findViewById(R.id.buttonFiltrar);
 
         executorService = Executors.newSingleThreadExecutor();
 
-        loadJugadores();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "gestionclubdeportivo")
+                .addMigrations(AppDatabase.MIGRATION_2_3)
+                .fallbackToDestructiveMigration()
+                .build();
+
+        loadJugadores(null, -1);
+
+        btnFiltrar.setOnClickListener(v -> {
+            String posicion = filtroPosicion.getText().toString().trim();
+            String equipoStr = filtroEquipo.getText().toString().trim();
+            int equipoId = equipoStr.isEmpty() ? -1 : Integer.parseInt(equipoStr);
+            loadJugadores(posicion.isEmpty() ? null : posicion, equipoId);
+        });
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            // Obtén el jugador seleccionado
             Jugador jugador = (Jugador) parent.getItemAtPosition(position);
 
             if (jugador != null) {
-                // Crear una nueva Intent para la actividad de detalles del jugador
                 Intent intent = new Intent(ListaJugadoresActivity.this, DetalleJugadorActivity.class);
-                // Pasar toda la información del jugador
                 intent.putExtra("jugador_id", jugador.getId());
                 intent.putExtra("jugador_nombre", jugador.getNombre());
                 intent.putExtra("jugador_apellidos", jugador.getApellidos());
@@ -55,20 +72,24 @@ public class ListaJugadoresActivity extends AppCompatActivity {
         });
     }
 
-    private void loadJugadores() {
+    private void loadJugadores(String posicion, int equipoId) {
         executorService.execute(() -> {
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "gestionclubdeportivo")
-                    .addMigrations(AppDatabase.MIGRATION_2_3) // Apply the migration
-                    .fallbackToDestructiveMigration() // Optional: fallback to destructive migration
-                    .build();
+            List<Jugador> jugadores;
 
-            List<Jugador> jugadores = db.jugadorDao().getAllJugadores();
+            if (posicion != null && equipoId != -1) {
+                jugadores = db.jugadorDao().getJugadoresByPosicionAndEquipo(posicion, equipoId);
+            } else if (posicion != null) {
+                jugadores = db.jugadorDao().getJugadoresByPosicion(posicion);
+            } else if (equipoId != -1) {
+                jugadores = db.jugadorDao().getJugadoresByEquipo(equipoId);
+            } else {
+                jugadores = db.jugadorDao().getAllJugadores();
+            }
 
             runOnUiThread(() -> {
                 if (jugadores.isEmpty()) {
-                    Toast.makeText(ListaJugadoresActivity.this, "No hay jugadores registrados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListaJugadoresActivity.this, "No se encontraron jugadores", Toast.LENGTH_SHORT).show();
                 }
-
                 jugadorAdapter = new JugadorAdapter(ListaJugadoresActivity.this, jugadores);
                 listView.setAdapter(jugadorAdapter);
             });
