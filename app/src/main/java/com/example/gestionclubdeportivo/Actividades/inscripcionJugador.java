@@ -61,6 +61,11 @@ public class inscripcionJugador extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button btguardar = findViewById(R.id.btGuardar);
+        btguardar.setOnClickListener(v -> {
+           guardarJugador();
+        });
+
         // Inicializar el calendario
         calendar = Calendar.getInstance();
 
@@ -148,7 +153,7 @@ public class inscripcionJugador extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void mostrarInfo() {
+    public void guardarJugador() {
         // Obtener los datos de los campos de texto y radio buttons
         String nombreTexto = ((EditText) findViewById(R.id.inputNombre)).getText().toString();
         String apellidosTexto = ((EditText) findViewById(R.id.inputApellidos)).getText().toString();
@@ -184,7 +189,7 @@ public class inscripcionJugador extends AppCompatActivity {
 
     private void insertJugadorEnBaseDeDatos(Jugador jugador) {
         // Crear o obtener la base de datos
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "jugadores_db")
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "gestionclubdeportivo")
                 .allowMainThreadQueries()
                 .build();
 
