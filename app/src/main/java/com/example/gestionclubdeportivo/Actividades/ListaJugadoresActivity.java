@@ -41,7 +41,6 @@ public class ListaJugadoresActivity extends AppCompatActivity {
         executorService = Executors.newSingleThreadExecutor();
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "gestionclubdeportivo")
-                .addMigrations(AppDatabase.MIGRATION_2_3)
                 .fallbackToDestructiveMigration()
                 .build();
 

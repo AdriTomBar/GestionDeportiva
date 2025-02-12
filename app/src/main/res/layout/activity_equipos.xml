@@ -14,9 +14,9 @@ android:background="@color/black"
 android:elevation="4dp"
 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 app:title="Equipos"
-app:titleTextColor="@color/white" /> <!-- Aquí usamos app:title y app:titleTextColor -->
+app:titleTextColor="@color/white" />
 
-    <!-- El resto de tu layout sigue igual -->
+
 <LinearLayout
 android:layout_width="match_parent"
 android:layout_height="wrap_content"

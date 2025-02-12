@@ -189,7 +189,7 @@
                     android:inputType="textMultiLine"
                     android:minLines="3" />
             </com.google.android.material.textfield.TextInputLayout>
-            <!-- Add this to your layout file (e.g., activity_inscipcion_jugador.xml) -->
+
             <Spinner
                 android:id="@+id/spinnerPosicion"
                 android:layout_width="match_parent"

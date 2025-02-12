@@ -2,6 +2,8 @@ package com.example.gestionclubdeportivo.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,8 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
         holder.tvFederado.setText(equipo.isFederado() ? "Federado: Sí" : "Federado: No");
         holder.tvCategoria.setText(equipo.getCategoria());
         holder.tvModalidad.setText(equipo.getModalidad());
-        holder.imgEquipo.setImageResource(equipo.getImagen());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(equipo.getImagen(), 0, equipo.getImagen().length);
+        holder.imgEquipo.setImageBitmap(bitmap);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, InfoEquipo.class);

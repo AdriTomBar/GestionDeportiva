@@ -41,4 +41,6 @@
     <string name="equipo_image">\n</string>
     <string name="dia_partido" />
     <string name="numero_contacto">Contacto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

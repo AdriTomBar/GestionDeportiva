@@ -2,7 +2,6 @@ package com.example.gestionclubdeportivo.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -55,7 +54,7 @@ public class DetalleJugadorActivity extends AppCompatActivity {
         posicionTextView.setText(posicion != null ? posicion : "Posición no disponible");
         equipoTextView.setText(equipo != -1 ? String.valueOf(equipo) : "Equipo no disponible");
 
-        // Configurar el botón para salir de la actividad
+
         btnSalir.setOnClickListener(v -> finish()); // Al hacer click, la actividad se cierra
     }
 }

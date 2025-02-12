@@ -1,5 +1,8 @@
 package com.example.gestionclubdeportivo.Actividades;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -16,6 +20,7 @@ import com.example.gestionclubdeportivo.R;
 import com.example.gestionclubdeportivo.Database.AppDatabase;
 import com.example.gestionclubdeportivo.models.Equipo;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +28,7 @@ import java.util.concurrent.Executors;
 public class Equipos extends AppCompatActivity {
 
     private Spinner spinnerCategoria, spinnerModalidad;
-    private EquipoAdapter equipoAdapter; // Keep this as an instance variable
+    private EquipoAdapter equipoAdapter;
     private AppDatabase db;
     private ExecutorService executorService;
 
@@ -32,55 +37,92 @@ public class Equipos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipos);
 
-        // Initialize the database
+        // Inicializar la base de datos
         db = Room.databaseBuilder(getApplicationContext(),
                         AppDatabase.class, "gestionclubdeportivo")
                 .fallbackToDestructiveMigration()
                 .build();
 
-        // Initialize ExecutorService
+        // Inicializar los hilos, en este caso se crea un solo hilo
         executorService = Executors.newSingleThreadExecutor();
 
-        // Initialize the Spinners
+        // Inicializar Spinners
         spinnerCategoria = findViewById(R.id.spinnerCategoria);
         spinnerModalidad = findViewById(R.id.spinnerModalidad);
 
-        ArrayAdapter<CharSequence> adapterCategoria = ArrayAdapter.createFromResource(this,
-                R.array.categorias, android.R.layout.simple_spinner_item);
+        // Crear un ArrayAdapter para el Spinner de Categoría usando los recursos de strings
+        ArrayAdapter<CharSequence> adapterCategoria = ArrayAdapter.createFromResource(
+                this,
+                R.array.categorias, // Array de strings definido
+                android.R.layout.simple_spinner_item // Layout predeterminado para los elementos del Spinner
+        );
+
+        // Definir el diseño que se usará para el desplegable del Spinner
         adapterCategoria.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Asignar el adaptador al Spinner de Categoría
         spinnerCategoria.setAdapter(adapterCategoria);
 
-        ArrayAdapter<CharSequence> adapterModalidad = ArrayAdapter.createFromResource(this,
-                R.array.modalidades, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterModalidad = ArrayAdapter.createFromResource(
+                this,
+                R.array.modalidades,
+                android.R.layout.simple_spinner_item
+        );
+
+        // Definir el diseño que se usará para el desplegable del Spinner
         adapterModalidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         spinnerModalidad.setAdapter(adapterModalidad);
 
-        // Initialize the RecyclerView
+        // Inicializar el RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerViewEquipos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Load data in background and insert a test team if database is empty
+        // Cargar la informacion y crear nuevos equipos si la BD esta vacia
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 List<Equipo> equipos = db.equipoDao().getAllEquipos();
 
-                // If the list is empty, insert a default team
                 if (equipos.isEmpty()) {
-                    Equipo equipo1 = new Equipo("Equipo 1", "Adidas", "Juvenil", "Masculino", true,
-                            R.drawable.murcia_basket, "Murcia Basket Contacto", "644756345", "Lunes 13", "13:00", "Lunes y Viernes");
-                    db.equipoDao().insertAll(equipo1);
 
-                    // Reload the list after inserting the test team
+                    Drawable drawable = ContextCompat.getDrawable(Equipos.this, R.drawable.aguilas_escudo);
+                    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    byte[] byteArrayImage = byteArrayOutputStream.toByteArray();
+                    Equipo equipo1 = new Equipo("Aguilas FC", "Nike", "Escuela", "Masculino", false, byteArrayImage, "Aguilas FC Contacto", "644756345", "Lunes 10", "19:00", "Lunes y Jueves");
+
+
+
+                     drawable = ContextCompat.getDrawable(Equipos.this, R.drawable.patinio_escudo);
+                     bitmap = ((BitmapDrawable) drawable).getBitmap();
+                     byteArrayOutputStream = new ByteArrayOutputStream();
+                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                     byteArrayImage = byteArrayOutputStream.toByteArray();
+                     Equipo equipo2 = new Equipo("Patiño FC", "Adidas", "Juvenil", "Femenino", true, byteArrayImage, "Patiño FC Contacto", "644756345", "Lunes 13", "13:00", "Martes y Viernes");
+
+                    drawable = ContextCompat.getDrawable(Equipos.this, R.drawable.real_murcia);
+                    bitmap = ((BitmapDrawable) drawable).getBitmap();
+                    byteArrayOutputStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    byteArrayImage = byteArrayOutputStream.toByteArray();
+                    Equipo equipo3 = new Equipo("Real Murcia FC", "Adidas", "Senior", "Femenino", true, byteArrayImage, "Real Murcia FC Contacto", "675544655", "Miercoles 4", "09:00", "Martes");
+
+
+
+                    db.equipoDao().insertAll(equipo1, equipo2, equipo3);
+
+
+
+                    // Recarga la lista con los equipos creados hasta ahora
                     equipos = db.equipoDao().getAllEquipos();
                 }
 
-                // Update the UI with the data in the main thread
                 List<Equipo> finalEquipos = equipos;
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        // Only update the adapter when data is ready
                         equipoAdapter = new EquipoAdapter(Equipos.this, finalEquipos);
                         recyclerView.setAdapter(equipoAdapter);
                     }
@@ -88,11 +130,10 @@ public class Equipos extends AppCompatActivity {
             }
         });
 
-        // Filter teams when a category or modality is selected
+        // FIltrar equipos por categoria y modalidad
         AdapterView.OnItemSelectedListener filtroListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Make sure equipoAdapter is initialized before calling filtrar
                 if (equipoAdapter != null) {
                     String categoria = spinnerCategoria.getSelectedItem().toString();
                     String modalidad = spinnerModalidad.getSelectedItem().toString();

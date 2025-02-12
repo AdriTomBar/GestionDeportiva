@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.gestionclubdeportivo.R;
 
 public class InfoEquipo extends AppCompatActivity {
@@ -44,16 +42,16 @@ public class InfoEquipo extends AppCompatActivity {
 
         if (intent != null) {
             imgEquipo.setImageResource(intent.getIntExtra("imagen", 0));
-            tvNombre.setText(getString(R.string.nombre) + ": " + intent.getStringExtra("nombre"));
-            tvPatrocinador.setText(getString(R.string.patrocinador) + ": " + intent.getStringExtra("patrocinador"));
-            tvCategoria.setText(getString(R.string.categoria) + ": " + intent.getStringExtra("categoria"));
-            tvModalidad.setText(getString(R.string.modalidad) + ": " + intent.getStringExtra("modalidad"));
-            tvFederado.setText(getString(R.string.federado) + ": " + (intent.getBooleanExtra("federado", false) ? "Sí" : "No"));
-            tvDiaPartido.setText(getString(R.string.dia_partido) + ": " + intent.getStringExtra("dia_partido"));
-            tvHoraPartido.setText(getString(R.string.hora_partido) + ": " + intent.getStringExtra("hora_partido"));
-            tvEntrenamientos.setText(getString(R.string.entrenamientos) + ": " + intent.getStringExtra("entrenamientos"));
-            tvContacto.setText(getString(R.string.persona_contacto) + ": " + intent.getStringExtra("persona_contacto"));
-            tvTelefono.setText(getString(R.string.numero_contacto) + ": " + intent.getStringExtra("numero_contacto"));
+            tvNombre.setText(getString(R.string.nombre) + " " + intent.getStringExtra("nombre"));
+            tvPatrocinador.setText(getString(R.string.patrocinador) + " " + intent.getStringExtra("patrocinador"));
+            tvCategoria.setText(getString(R.string.categoria) + " " + intent.getStringExtra("categoria"));
+            tvModalidad.setText(getString(R.string.modalidad) + " " + intent.getStringExtra("modalidad"));
+            tvFederado.setText(getString(R.string.federado) + "" + (intent.getBooleanExtra("federado", false) ? "Sí" : "No"));
+            tvDiaPartido.setText(getString(R.string.dia_partido) + " " + intent.getStringExtra("dia_partido"));
+            tvHoraPartido.setText(getString(R.string.hora_partido) + " " + intent.getStringExtra("hora_partido"));
+            tvEntrenamientos.setText(getString(R.string.entrenamientos) + " " + intent.getStringExtra("entrenamientos"));
+            tvContacto.setText(getString(R.string.persona_contacto) + " " + intent.getStringExtra("persona_contacto"));
+            tvTelefono.setText(getString(R.string.numero_contacto) + " " + intent.getStringExtra("numero_contacto"));
         }
     }
 }

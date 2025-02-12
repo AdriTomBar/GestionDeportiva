@@ -25,7 +25,7 @@ public class Equipo {
     private boolean federado;
 
     @ColumnInfo(name = "imagen")
-    private int imagen;
+    private byte[] imagen;
 
     @ColumnInfo(name = "persona_contacto")
     private String personaContacto;
@@ -42,7 +42,7 @@ public class Equipo {
     @ColumnInfo(name = "entrenamientos")
     private String entrenamientos;  // Nuevo campo
 
-    public Equipo(String nombre, String patrocinador, String categoria, String modalidad, boolean federado, int imagen,
+    public Equipo(String nombre, String patrocinador, String categoria, String modalidad, boolean federado, byte[] imagen,
                   String personaContacto, String numeroContacto, String diaPartido, String horaPartido, String entrenamientos) {
         this.nombre = nombre;
         this.patrocinador = patrocinador;
@@ -108,11 +108,11 @@ public class Equipo {
         this.federado = federado;
     }
 
-    public int getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(int imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 
