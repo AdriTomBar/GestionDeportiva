@@ -19,20 +19,10 @@
             android:name=".Actividades.ListaJugadoresActivity"
             android:exported="false" />
         <activity
-            android:name=".Actividades.MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2" />
-        <activity
             android:name=".Actividades.InfoEquipo"
             android:exported="false" />
         <activity
-            android:name=".Equipo"
-            android:exported="false" />
-        <activity
             android:name=".Actividades.Equipos"
-            android:exported="false" />
-        <activity
-            android:name=".models.Equipos"
             android:exported="false" />
         <activity
             android:name=".Actividades.Informes"
