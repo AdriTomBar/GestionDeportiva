@@ -42,7 +42,7 @@ public class ReporteFragment extends Fragment {
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822"); // garantiza que solo se abran apps de correo electronico
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"soporte@ejemplo.com"});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"soporteCDIesCierva@ejemplo.com"});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Reporte de usuario");
         intent.putExtra(Intent.EXTRA_TEXT, mensaje);
 
