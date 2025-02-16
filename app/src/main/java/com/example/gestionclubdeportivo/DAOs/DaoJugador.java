@@ -41,4 +41,7 @@ public interface DaoJugador {
 
     @Query("SELECT * FROM jugadores WHERE posicion = :posicion AND equipo = :equipoId")
     List<Jugador> getJugadoresByPosicionAndEquipo(String posicion, int equipoId);
+
+    @Query("SELECT * FROM jugadores WHERE id = :jugadorId LIMIT 1")
+    Jugador getJugadorById(int jugadorId);
 }

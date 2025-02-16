@@ -34,6 +34,9 @@ public class Jugador {
     @ColumnInfo(name = "equipo")
     private int equipo;
 
+    @ColumnInfo(name = "imagen")
+    private byte[] imagen;
+
     private String equipoNombre;
 
     public String getEquipoNombre() {
@@ -53,12 +56,21 @@ public class Jugador {
         this.altura = altura;
         this.posicion = posicion;
         this.equipo = equipo;
-    }
+        this.imagen = null;
+        }
 
-    public Jugador() {
-    }
+
 
     // Getters and setters...
+
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
 
     public int getId() {
         return id;
