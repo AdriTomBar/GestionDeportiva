@@ -8,7 +8,6 @@
     android:padding="16dp"
     tools:context=".Actividades.DetalleJugadorActivity">
 
-
     <TextView
         android:id="@+id/tituloTextView"
         android:layout_width="wrap_content"
@@ -16,22 +15,31 @@
         android:text="Detalles del Jugador"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
+    <ImageView
+        android:id="@+id/imgJugador"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="Imagen del jugador"
+        app:layout_constraintTop_toBottomOf="@id/tituloTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        tools:srcCompat="@tools:sample/avatars"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewJugador"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp"
-        app:layout_constraintTop_toBottomOf="@id/tituloTextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgJugador"
+        app:layout_constraintStart_toEndOf="@id/imgJugador"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp">
+        android:layout_marginStart="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,45 +101,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Equipo"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                android:textSize="16sp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-
-    <ImageView
-        android:id="@+id/imgJugador"
-        android:layout_width="214dp"
-        android:layout_height="195dp"
-        android:contentDescription="Imagen del jugador"
-        app:layout_constraintTop_toBottomOf="@id/cardViewJugador"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="16dp"
-        tools:srcCompat="@tools:sample/avatars"/>
-
-
     <Button
         android:id="@+id/btFoto"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Seleccionar Foto"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/imgJugador"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imgJugador"
+        app:layout_constraintEnd_toEndOf="@id/imgJugador"
         android:layout_marginTop="16dp"/>
 
+    <TextView
+        android:id="@+id/spinnerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Equipo:"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/btFoto"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
 
     <Spinner
         android:id="@+id/spinnerEquipos"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btFoto"
+        app:layout_constraintTop_toBottomOf="@id/spinnerLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/btnSalir"
@@ -139,8 +141,7 @@
         android:layout_height="wrap_content"
         android:text="Salir"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/spinnerEquipos"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginBottom="24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

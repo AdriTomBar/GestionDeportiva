@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gestionclubdeportivo.DAOs.EquipoDao;
 import com.example.gestionclubdeportivo.DAOs.DaoJugador;
-import com.example.gestionclubdeportivo.DAOs.EquipoDao;
 import com.example.gestionclubdeportivo.Database.AppDatabase;
 import com.example.gestionclubdeportivo.R;
 import com.example.gestionclubdeportivo.models.Equipo;
@@ -97,7 +96,7 @@ public class DetalleJugadorActivity extends AppCompatActivity {
         alturaTextView.setText(altura != 0 ? String.valueOf(altura) : "Altura no disponible");
         posicionTextView.setText(posicion != null ? posicion : "Posición no disponible");
 
-        // Obtener los equipos de la base de datos
+        // Obtener los equipos de la base de datos y rellenar spinner
         Executors.newSingleThreadExecutor().execute(() -> {
             listaEquipos = daoEquipo.getAllEquipos(); // Obtener equipos
             runOnUiThread(() -> {
